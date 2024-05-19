@@ -1,0 +1,84 @@
+.collection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+
+  &__grid {
+    width: 60rem;
+    max-width: 100%;
+    display: grid;
+    row-gap: 2rem;
+    grid-template-columns: [headerBoxStart contentBoxStart] 1fr [headerBoxEnd addBoxStart] 1fr [addBoxEnd contentBoxEnd];
+    grid-template-rows: [navbarStart] min-content [navbarEnd contentBoxStart] min-content [contentBoxEnd];
+  }
+
+  &__headerBox,
+  &__addBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__headerBox {
+    grid-row: navbarStart / navbarEnd;
+    grid-column: headerBoxStart / headerBoxEnd;
+  }
+
+  &__addBox {
+    grid-row: navbarStart / navbarEnd;
+    grid-column: addBoxStart / addBoxEnd;
+  }
+
+  &__contentBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    grid-row: contentBoxStart / contentBoxEnd;
+    grid-column: contentBoxStart / contentBoxEnd;
+  }
+
+  &__addBtn {
+    display: flex;
+    align-items: stretch;
+    border-radius: 100rem;
+    height: 4rem;
+    overflow: hidden;
+    border: 1px solid $colorPrimary;
+
+    &--icon {
+      width: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $colorPrimary;
+      color: $colorWhite;
+      cursor: pointer;
+
+      @include respond(phone) {
+        width: 5rem;
+      }
+    }
+
+    input {
+      background: transparent;
+      width: 100%;
+      max-width: 10rem;
+      color: $colorPrimary;
+      line-height: 100%;
+      font-size: $defaultFontSize;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+
+      &::-webkit-input-placeholder {
+        color: $colorPrimary;
+        font-weight: 500;
+        font-size: $defaultFontSize;
+        text-transform: lowercase;
+        line-height: 100%;
+      }
+    }
+  }
+}

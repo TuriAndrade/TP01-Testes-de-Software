@@ -1,0 +1,42 @@
+.sticker {
+  border: 1px solid $colorPrimary;
+  border-radius: 100rem;
+  overflow: hidden;
+  display: flex;
+  height: 4rem;
+  align-items: stretch;
+
+  @include respond(phone) {
+    height: 5rem;
+  }
+
+  &__removeBox {
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $colorPrimary;
+    color: $colorWhite;
+    cursor: pointer;
+
+    @include respond(phone) {
+      width: 5rem;
+    }
+  }
+
+  &__number {
+    width: 4rem;
+    min-width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    font-size: 2rem;
+    color: $colorPrimary;
+
+    @include respond(phone) {
+      width: 5rem;
+    }
+  }
+}

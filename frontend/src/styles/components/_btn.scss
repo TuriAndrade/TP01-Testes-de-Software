@@ -1,0 +1,152 @@
+.textBtn {
+  &,
+  &:link,
+  &:visited {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+
+  &--stretch {
+    width: 100%;
+  }
+
+  &__text {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: $colorPrimary;
+    transition: color 0.1s ease-out 0.1s;
+  }
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    top: -50%;
+    left: -50%;
+    width: 300%;
+    height: 300%;
+    transform: rotateZ(20deg) translateX(50%);
+    transition: transform ease-in 0.2s;
+    background-image: linear-gradient(
+      to right,
+      $colorPrimary,
+      $colorPrimaryLight
+    );
+  }
+
+  @include notTouchDevice() {
+    &:hover &__background {
+      transform: rotateZ(20deg) translateX(0);
+    }
+
+    &:hover &__text {
+      color: $colorWhite;
+    }
+  }
+}
+
+.btnPrimary {
+  &,
+  &:link,
+  &:visited,
+  &:active {
+    position: relative;
+    display: inline-block;
+    background-color: $colorPrimaryLight;
+    border-radius: 3px;
+    padding: 0.8rem;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  &-enter-active {
+    opacity: 0.9;
+  }
+
+  &-enter-done,
+  &-exit {
+    opacity: 0.9;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    max-height: 100%;
+
+    &-enter {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-enter-active {
+      visibility: visible;
+      opacity: 1;
+      transition: all 0.2s 0.2s;
+    }
+
+    &-enter-done,
+    &-exit {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-exit-active {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+  }
+
+  &__text {
+    color: $colorWhite;
+    font-size: $defaultFontSize;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &--icon {
+      font-size: 1.4rem;
+    }
+
+    &-enter {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-enter-active {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+
+    &-enter-done,
+    &-exit {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-exit-active {
+      visibility: visible;
+      opacity: 1;
+      transition: all 0.2s 0.2s;
+    }
+  }
+
+  @include notTouchDevice() {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

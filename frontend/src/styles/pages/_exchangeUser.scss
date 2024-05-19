@@ -1,0 +1,54 @@
+.exchangeUser {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+
+  &__grid {
+    width: 40rem;
+    max-width: 100%;
+    display: grid;
+    align-items: center;
+    row-gap: 2rem;
+    grid-template-columns:
+      [headerBoxStart contentBoxStart submitBtnBoxStart]
+      max-content [headerBoxEnd pageBtnBoxStart]
+      1fr [contentBoxEnd pageBtnBoxEnd submitBtnBoxEnd];
+    grid-template-rows:
+      [navbarStart pageBtnBoxStart]
+      min-content [navbarEnd pageBtnBoxEnd contentBoxStart]
+      min-content [contentBoxEnd submitBtnBoxStart]
+      min-content [submitBtnBoxEnd];
+  }
+
+  &__headerBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: navbarStart / navbarEnd;
+    grid-column: headerBoxStart / headerBoxEnd;
+  }
+
+  &__contentBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    grid-row: contentBoxStart / contentBoxEnd;
+    grid-column: contentBoxStart / contentBoxEnd;
+  }
+
+  &__pageBtnBox {
+    display: flex;
+    justify-content: flex-end;
+    grid-row: pageBtnBoxStart / pageBtnBoxEnd;
+    grid-column: pageBtnBoxStart / pageBtnBoxEnd;
+  }
+
+  &__submitBtnBox {
+    display: flex;
+    justify-content: flex-start;
+    grid-row: submitBtnBoxStart / submitBtnBoxEnd;
+    grid-column: submitBtnBoxStart / submitBtnBoxEnd;
+  }
+}

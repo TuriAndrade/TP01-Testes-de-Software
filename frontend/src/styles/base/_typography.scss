@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: $defaultFontSize;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+input,
+button,
+textarea {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: $defaultFontSize;
+  -webkit-font-smoothing: antialiased;
+} // Don't inherit body's rules
+
+.p {
+  font-size: $defaultFontSize;
+  font-weight: 400;
+
+  @include respond(tabPort) {
+    font-size: 1.7rem;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--strong {
+    font-weight: 600;
+  }
+
+  &--black {
+    color: $colorBlack;
+  }
+
+  &--white {
+    color: $colorWhite;
+  }
+
+  &--primary {
+    color: $colorPrimary;
+  }
+}
+
+.coolHeading {
+  text-align: center;
+  text-transform: lowercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    $colorPrimary,
+    $colorPrimaryLight
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  color: transparent;
+  transition: all 0.2s;
+
+  @include notTouchDevice() {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &--small {
+    font-size: 2rem;
+  }
+
+  &--medium {
+    font-size: 3rem;
+  }
+}

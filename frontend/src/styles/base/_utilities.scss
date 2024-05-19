@@ -1,0 +1,61 @@
+.uIconSmall {
+  width: 2rem !important;
+}
+
+.uIconMedium {
+  width: 2.5rem !important;
+}
+
+.uTextMedium {
+  font-weight: 500 !important;
+}
+
+.uTextStrong {
+  font-weight: 600 !important;
+}
+
+.uTextUppercase {
+  text-transform: uppercase !important;
+}
+
+.uDisabledBtn {
+  &,
+  &:link,
+  &:visited,
+  &:active {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+  }
+
+  @include notTouchDevice() {
+    &:hover {
+      opacity: 0.4 !important;
+      pointer-events: none !important;
+    }
+  }
+}
+
+.uHighlight {
+  display: inline-block !important;
+  position: relative !important;
+  line-height: 100% !important;
+
+  &::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 4px !important;
+  }
+
+  &--primaryLight {
+    &::after {
+      background-color: $colorPrimaryLight !important;
+    }
+  }
+}
+
+.uDontDecorate {
+  text-decoration: none !important;
+}

@@ -1,0 +1,26 @@
+.stickerSelect {
+  border: 1px solid $colorPrimary;
+  border-radius: 100rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $defaultFontSize;
+  color: $colorPrimary;
+  transition: all 0.2s;
+  font-weight: 600;
+  cursor: pointer;
+
+  &--active {
+    background-color: $colorPrimary;
+    color: $colorWhite;
+  }
+
+  @include notTouchDevice() {
+    &:hover {
+      background-color: $colorPrimary;
+      color: $colorWhite;
+    }
+  }
+}

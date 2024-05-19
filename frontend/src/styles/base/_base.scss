@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit; //Makes all elements inherit body's box-sizing
+  -webkit-tap-highlight-color: transparent; //Fixes links weird highlight on touch devices
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  @include respond(tabLand) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tabPort) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(bigDesktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $colorGreyLight;
+}
+
+input,
+button,
+textarea,
+a {
+  border: none;
+  box-sizing: border-box; //Don't inherit body's box-sizing in some situations
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background-color: $colorPrimaryLight;
+  color: $colorWhite;
+}

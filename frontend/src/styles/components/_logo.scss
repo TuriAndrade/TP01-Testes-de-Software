@@ -1,0 +1,77 @@
+.logo {
+  display: grid;
+  padding-right: 3rem;
+  grid-template-rows: 1fr min-content;
+
+  &__textBox {
+    &--text {
+      color: $colorBlack;
+      font-weight: 600;
+      line-height: 100%;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    position: relative;
+    display: inline-flex;
+    grid-row: 1 / 2;
+    width: min-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $colorPrimary;
+      border-radius: 100%;
+      bottom: 0.5rem;
+      right: 0;
+
+      @include respond(phone) {
+        bottom: 0;
+        right: 0;
+
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  &__sub {
+    grid-row: 2 / 3;
+    color: $colorBlack;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: lowercase;
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  grid-template-columns: 1fr;
+
+  &--small {
+    .logo__textBox {
+      &--text {
+        @include respond(phone) {
+          display: none;
+        }
+      }
+
+      font-size: 4rem;
+      padding-right: 3rem;
+
+      &::after {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &__sub {
+      font-size: 2rem;
+      padding-top: 0.5rem;
+    }
+
+    @include respond(phone) {
+      font-size: 3.3rem;
+    }
+  }
+}

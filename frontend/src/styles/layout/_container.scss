@@ -1,0 +1,92 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__grid {
+    position: relative;
+    display: grid;
+    width: 100%;
+    max-width: 144rem;
+    column-gap: 6rem;
+    min-height: 100vh;
+    align-content: stretch;
+
+    @include respond(tabPort) {
+      column-gap: 4rem;
+    }
+
+    @include respond(phone) {
+      column-gap: 1rem;
+    }
+
+    grid-template-rows: [navbarBoxStart] 8rem [navbarBoxEnd contentBoxStart] 1fr [contentBoxEnd];
+
+    &--default {
+      grid-template-columns:
+        [contentBoxStart] 2rem
+        [logoBoxStart] minmax(min-content, 1fr)
+        [logoBoxEnd aboutBoxStart] min-content
+        [aboutBoxEnd loginBoxStart] min-content
+        [loginBoxEnd registerBoxStart] min-content
+        [registerBoxEnd] 2rem [contentBoxEnd];
+    }
+
+    &--dashboard {
+      grid-template-columns:
+        [contentBoxStart] 2rem
+        [logoBoxStart] minmax(min-content, 1fr)
+        [logoBoxEnd dashboardBoxStart] min-content
+        [dashboardBoxEnd profileBoxStart] min-content
+        [profileBoxEnd logoutBoxStart] min-content
+        [logoutBoxEnd] 2rem [contentBoxEnd];
+    }
+  }
+
+  &__navbarBox {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &--logo {
+      grid-column: logoBoxStart / logoBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--about {
+      grid-column: aboutBoxStart / aboutBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--login {
+      grid-column: loginBoxStart / loginBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--register {
+      grid-column: registerBoxStart / registerBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--logout {
+      grid-column: logoutBoxStart / logoutBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--profile {
+      grid-column: profileBoxStart / profileBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+
+    &--dashboard {
+      grid-column: dashboardBoxStart / dashboardBoxEnd;
+      grid-row: navbarBoxStart / navbarBoxEnd;
+    }
+  }
+
+  &__contentBox {
+    grid-row: contentBoxStart / contentBoxEnd;
+    grid-column: contentBoxStart / contentBoxEnd;
+  }
+}

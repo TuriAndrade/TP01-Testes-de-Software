@@ -1,0 +1,42 @@
+.exchange {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem;
+
+  &__grid {
+    width: 50rem;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: [headerBoxStart contentBoxStart] 1fr [headerBoxEnd contentBoxEnd];
+    grid-template-rows: [navbarStart] min-content [navbarEnd];
+    grid-auto-rows: min-content;
+
+    & > * {
+      border-bottom: 1px solid $colorPrimary;
+    }
+
+    & > *:first-child,
+    & > *:last-child {
+      border: none;
+    }
+  }
+
+  &__headerBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: navbarStart / navbarEnd;
+    grid-column: headerBoxStart / headerBoxEnd;
+    padding-bottom: 2rem;
+  }
+
+  &__userLink {
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}

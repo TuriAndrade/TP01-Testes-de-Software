@@ -1,0 +1,98 @@
+.userCard {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    top: -50%;
+    left: -50%;
+    width: 300%;
+    height: 400%;
+    transform: rotateZ(20deg) translateX(50%);
+    transition: transform ease-in 0.3s;
+    background-image: linear-gradient(
+      to right,
+      $colorPrimary,
+      $colorPrimaryLight
+    );
+  }
+
+  @include notTouchDevice() {
+    &:hover &__background {
+      transform: rotateZ(20deg) translateX(0);
+    }
+
+    &:hover &__textLabel {
+      color: $colorWhite;
+    }
+
+    &:hover &__textValue {
+      color: $colorWhite;
+    }
+  }
+
+  display: grid;
+  grid-template-rows: [profilePictureStart usernameStart] min-content [usernameEnd exchangeStart] min-content [exchangeEnd profilePictureEnd];
+  grid-template-columns: [profilePictureStart] min-content [profilePictureEnd infoStart] 1fr [infoEnd];
+  row-gap: 0.5rem;
+  column-gap: 2rem;
+  align-items: center;
+  padding: 1rem;
+
+  &__profilePictureBox {
+    background-color: $colorGreyLight;
+    position: relative;
+    grid-row: profilePictureStart / profilePictureEnd;
+    grid-column: profilePictureStart / profilePictureEnd;
+    border-radius: 100rem;
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  &__usernameBox {
+    grid-row: usernameStart / usernameEnd;
+    grid-column: infoStart / infoEnd;
+  }
+
+  &__exchangeBox {
+    grid-row: exchangeStart / exchangeEnd;
+    grid-column: infoStart / infoEnd;
+  }
+
+  &__textBox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__textLabel {
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: lowercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(
+      to right,
+      $colorPrimary,
+      $colorPrimaryLight
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color: transparent;
+    transition: all 0.3s;
+  }
+
+  &__textValue {
+    transition: all 0.3s;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    color: $colorGreyDark;
+  }
+}

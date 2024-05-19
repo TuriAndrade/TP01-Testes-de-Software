@@ -1,0 +1,38 @@
+// MEDIA QUERY MANAGER
+@mixin respond($breakpoint) {
+  @if $breakpoint == smallPhone {
+    @media only screen and (max-width: 25em) {
+      @content;
+    } //400px
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint == tabPort {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint == tabLand {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == bigDesktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
+}
+
+//em works just like rem here because it's relative to the font-size defined in the html tag
+//em has better support from browsers
+
+//This can be used to prevent css rules to be applied to touch devices
+@mixin notTouchDevice {
+  @media not all and (pointer: coarse) {
+    @content;
+  }
+}

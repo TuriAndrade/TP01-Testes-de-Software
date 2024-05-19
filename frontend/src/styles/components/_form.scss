@@ -1,0 +1,131 @@
+.pageFormContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6rem 2rem;
+  }
+}
+
+.form {
+  background-color: $colorWhite;
+  box-shadow: 0 0.5rem 0.4rem rgba($colorBlack, 0.15);
+  border-radius: 3px;
+  max-width: 30rem;
+  width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  &--success {
+    border: 1px solid $colorGreen;
+  }
+
+  &--error {
+    border: 1px solid $colorRed;
+  }
+
+  &__box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__label {
+    color: $colorBlack;
+    font-weight: 600;
+    font-size: $defaultFontSize;
+    text-transform: lowercase;
+
+    &--error {
+      color: $colorRed;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    background-color: $colorGreyLight;
+    color: $colorBlack;
+    line-height: 100%;
+    font-size: 1.4rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    height: 3.3rem;
+    border-radius: 3px;
+
+    &--error {
+      border: 1px solid $colorRed;
+
+      &::-webkit-input-placeholder {
+        color: rgba($colorRed, 0.7);
+      }
+    }
+
+    &::-webkit-input-placeholder {
+      color: rgba($colorBlack, 0.7);
+      font-weight: 500;
+      font-size: 1.4rem;
+      text-transform: lowercase;
+      line-height: 100%;
+    }
+  }
+
+  &__errorMessage {
+    font-size: 1.4rem;
+    color: $colorRed;
+    text-transform: lowercase;
+  }
+
+  &__btnBox {
+    display: flex;
+    align-items: center;
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--spaceBetween {
+      justify-content: space-between;
+    }
+  }
+
+  &__backBtn {
+    padding: 0.5rem;
+    display: inline-flex;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: rgba($colorGreyDark, 0.8);
+  }
+
+  &__homeBtn {
+    padding: 0.5rem;
+    display: inline-flex;
+    font-size: 3rem;
+    cursor: pointer;
+    color: $colorPrimaryLight;
+  }
+
+  &__text {
+    color: rgba($colorGreyDark, 0.8);
+    font-size: 1.4rem;
+    width: 100%;
+    line-height: 130%;
+    display: flex;
+    justify-content: center;
+
+    &--success {
+      color: $colorGreen;
+    }
+
+    &--error {
+      color: $colorRed;
+    }
+  }
+}

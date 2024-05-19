@@ -1,0 +1,28 @@
+.loadingBox {
+  display: flex;
+  gap: 0.5rem;
+
+  &__bar {
+    width: 0.8rem;
+    height: 1.8rem;
+    border-radius: 2px;
+    animation: loading 1.2s linear infinite backwards;
+    transform-origin: bottom center;
+
+    &--1 {
+      animation-delay: 0.1s;
+    }
+
+    &--2 {
+      animation-delay: 0.2s;
+    }
+
+    &--3 {
+      animation-delay: 0.3s;
+    }
+
+    &--white {
+      background-color: $colorWhite;
+    }
+  }
+}
