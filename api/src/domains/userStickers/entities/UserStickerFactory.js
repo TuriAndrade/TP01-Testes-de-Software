@@ -1,7 +1,7 @@
 function UserStickerFactory({ InvalidParamError }) {
   return class UserStickerEntity {
     constructor({ amount, userId, stickerId }) {
-      if (!amount) {
+      if (!amount || typeof amount != "number" || amount < 1) {
         throw new InvalidParamError("Quantidade inválida.");
       } else if (!userId || typeof userId != "number") {
         throw new InvalidParamError("Id de usuário inválida.");

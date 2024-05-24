@@ -11,6 +11,10 @@ function NotificationFactory({ InvalidParamError }) {
         throw new InvalidParamError(
           "Id do destinatário deve ser maior do que 0."
         );
+      } else if (to == from) {
+        throw new InvalidParamError(
+          "Remetente e destinatário devem ser diferentes."
+        );
       }
 
       this.from = from;
