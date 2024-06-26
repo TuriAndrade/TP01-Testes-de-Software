@@ -44,7 +44,10 @@ jobs:
           done
 
       - name: Start backend
-        run: npm start &
+        run: |
+          echo 'Iniciando o backend...'
+          npm start &
+          sleep 15
         env:
           CI: true
           DATABASE: testdb
@@ -52,16 +55,25 @@ jobs:
           PASSWORD: root
           HOST: 127.0.0.1
 
+      - name: Check backend logs
+        run: |
+          echo 'Checando logs do backend...'
+          sleep 10
+          cat /home/runner/work/TP01-Testes-de-Software/TP01-Testes-de-Software/logs/backend.log
+
       - name: Wait for backend to be ready
-        run: npx wait-on http://localhost:3000 --timeout 60000
+        run: npx wait-on http://localhost:3000 --timeout 120000
 
       - name: Start frontend
-        run: npm run dev &
+        run: |
+          echo 'Iniciando o frontend...'
+          npm run dev &
+          sleep 15
         env:
           CI: true
 
       - name: Wait for frontend to be ready
-        run: npx wait-on http://localhost:3001 --timeout 60000
+        run: npx wait-on http://localhost:3001 --timeout 120000
 
       - name: Run unit tests
         run: npm test
