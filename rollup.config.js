@@ -1,7 +1,7 @@
 import { babel } from '@rollup/plugin-babel';
 
 const config = {
-  input: 'src/app.js',
+  input: './index.js',
   output: {
 	file: 'dist/bundle.js',
     format: 'iife'
