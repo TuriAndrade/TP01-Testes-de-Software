@@ -2,6 +2,10 @@
 
 describe("E2E tests", () => {
 
+  beforeEach(() => {
+    cy.intercept("GET", "/api/endpoint", { fixture: "mockData.json" });
+  });
+
   it("should be in main url", () => {
     cy.visit("http://localhost:3000/");
     cy.wait(2000);
@@ -43,7 +47,7 @@ describe("E2E tests", () => {
     cy.visit("http://localhost:3000/"); // Substitua pela URL real da sua página
     cy.wait(2000);
     // Verificar se o texto 'Sticker Trader' está presente no elemento com a classe 'logo__textBox--text'
-    cy.get('.logo__textBox--text').should('contain', 'Sticker Trader');
+    cy.get(".logo__textBox--text").should("contain", "Sticker Trader");
   });
 
 
