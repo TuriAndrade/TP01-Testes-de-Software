@@ -5,28 +5,28 @@ describe("E2E tests", () => {
   it("should be in main url", () => {
     cy.visit("http://localhost:3000/");
     cy.wait(2000);
-    cy.clearAllCookies();
+    // cy.clearAllCookies();
     cy.url().should("eq", "http://localhost:3000/");
   });
 
   it("should be in login url", () => {
     cy.visit("http://localhost:3000/login");
     cy.wait(2000);
-    cy.clearAllCookies();
+    // cy.clearAllCookies();
     cy.url().should("eq", "http://localhost:3000/login");
   });
 
   it("should be in register url", () => {
     cy.visit("http://localhost:3000/register");
     cy.wait(2000);
-    cy.clearAllCookies();
+    // cy.clearAllCookies();
     cy.url().should("eq", "http://localhost:3000/register");
   });
 
   it("should raise 404 error", () => {
     cy.visit("http://localhost:3000/about", { failOnStatusCode: false });
     cy.wait(2000);
-    cy.clearAllCookies();
+    // cy.clearAllCookies();
 
     // Verificar se o status da resposta é 404
     cy.get("body").then(($body) => {
