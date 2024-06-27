@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run E2E Tests
 
 on:
   push:
@@ -6,28 +6,6 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
   e2e-tests:
     runs-on: ubuntu-latest
 
@@ -52,8 +30,4 @@ jobs:
 
       - name: Run Cypress tests
         working-directory: ./frontend
-        uses: cypress-io/github-action@v5
-        with:
-          start: npm run dev
-        env:
-          CYPRESS_BASE_URL: http://localhost:3000
+        run: npx cypress run

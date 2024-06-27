@@ -2,10 +2,6 @@
 
 describe("E2E tests", () => {
 
-  beforeEach(() => {
-    cy.intercept("GET", "/api/endpoint", { fixture: "mockData.json" });
-  });
-
   it("should be in main url", () => {
     cy.visit("http://localhost:3000/");
     cy.wait(2000);
