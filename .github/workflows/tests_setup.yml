@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   test:
@@ -17,81 +14,26 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Run Jest tests
-        run: npm test
+    - name: Run tests
+      run: npm test
 
   cypress-run:
     runs-on: ubuntu-latest
-
-    services:
-      db:
-        image: postgres:latest
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: testdb
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Cypress.io
+        uses: cypress.io/github-action@v2.9.7
         with:
-          node-version: "16"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install PostgreSQL client
-        run: npm install pg
-
-      - name: Wait for database to be ready
-        run: |
-          until pg_isready -h localhost -p 5432 -U postgres; do
-            echo "Waiting for database to be ready..."
-            sleep 5
-          done
-
-      - name: Start the application
-        run: npm start > application.log 2>&1 &
-        env:
-          CI: true
-          DB_NAME: testdb
-          DB_USER: postgres
-          DB_PASSWORD: postgres
-          DB_DIALECT: postgres
-          DB_HOST: localhost
-          DB_PORT: 5432
-
-      - name: Wait for application to be ready
-        run: npx wait-on http://localhost:3030 --timeout 300000
-
-      - name: Check application logs if timeout occurs
-        if: failure()
-        run: |
-          echo "Application failed to start, checking logs..."
-          cat application.log
-
-      - name: Run Cypress tests
-        run: npx cypress run
-        env:
-          CYPRESS_BASE_URL: http://localhost:3030
+          start: npm start
