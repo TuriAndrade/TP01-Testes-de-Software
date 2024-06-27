@@ -72,7 +72,7 @@ jobs:
           done
 
       - name: Start the application
-        run: npm start &
+        run: npm start > application.log 2>&1 &
         env:
           CI: true
           DB_NAME: testdb
@@ -82,13 +82,13 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
 
+      - name: Wait for application to be ready
+        run: npx wait-on http://localhost:3030 --timeout 300000
+
       - name: Check application logs
         run: |
           echo "Checking application logs..."
-          tail -n 50 nohup.out
-
-      - name: Wait for application to be ready
-        run: npx wait-on http://localhost:3030 --timeout 300000
+          tail -n 50 application.log
 
       - name: Run Cypress tests
         run: npx cypress run
