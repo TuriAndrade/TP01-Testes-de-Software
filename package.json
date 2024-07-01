@@ -29,6 +29,9 @@
     "todomvc-app-css": "2.3.0",
     "todomvc-common": "1.0.5",
     "wait-on": "^7.2.0"
+    "@cypress/code-coverage": "latest",
+    "nyc": "latest",
+    "istanbul-lib-coverage": "latest",
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
