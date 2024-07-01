@@ -33,7 +33,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/*.json
-          flags: unittests 
+          flags: unittests
           name: code-coverage-report
 
   e2e-tests:
@@ -60,12 +60,12 @@ jobs:
 
       - name: Run Cypress tests
         working-directory: ./frontend
-        run: npx cypress run
+        run: npm run test:coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./frontend/coverage/*.json 
-          flags: e2etests 
+          files: ./frontend/coverage/*.json
+          flags: e2etests
           name: e2e-code-coverage-report
