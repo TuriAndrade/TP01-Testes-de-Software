@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:coverage": "nyc report --reporter=json --report-dir=./coverage"
+    "coverage": "nyc report --reporter=json --report-dir=./coverage"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -27,5 +27,11 @@
     "eslint-config-next": "12.3.1",
     "jest": "^29.7.0",
     "puppeteer": "^22.12.1"
+  },
+  "nyc": {
+    "include": ["src/**/*.js"],
+    "exclude": ["node_modules"],
+    "report-dir": "./coverage",
+    "temp-dir": "./.nyc_output"
   }
 }
