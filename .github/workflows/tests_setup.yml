@@ -32,6 +32,9 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/*.json
+          flags: unittests 
+          name: code-coverage-report
 
   e2e-tests:
     runs-on: ubuntu-latest
@@ -63,3 +66,6 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./frontend/coverage/*.json 
+          flags: e2etests 
+          name: e2e-code-coverage-report
