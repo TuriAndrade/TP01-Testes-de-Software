@@ -1,3 +1,5 @@
+const { defineConfig } = require('cypress')
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -6,5 +8,7 @@ module.exports = defineConfig({
       require('@cypress/code-coverage/task')(on, config);
       return config;
     },
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    baseUrl: 'http://localhost:3000',
   },
 });
